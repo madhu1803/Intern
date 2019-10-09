@@ -118,6 +118,10 @@ var myObj= {};
 myObj.myRows= myRows;
 console.log(JSON.stringify(myObj));
 		}
+			 name.value="";
+                        quantity.value="";
+                        taxx.value="";
+                         amount.value="";
        }
 
 	</script>
@@ -154,7 +158,7 @@ console.log(JSON.stringify(myObj));
 			</div>
                   <div class="form-group">
 	<label for="tax">Product Tax:</label>
-	<input type="number"  id="tax" class="form-control" min="1" max="100" required placholder="tax percent">
+	<input type="number"  id="tax" class="form-control" min="1" max="100" required placeholder="tax percent">
 	
 </div>
 		<button type='button' class="btn btn-primary btn-lg" onclick="getinput();" style="text-align:  center ;">Submit</button>
