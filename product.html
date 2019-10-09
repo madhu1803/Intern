@@ -56,6 +56,10 @@
 
 		if(name.value==""||quantity.value==""||taxx.value==""||amount.value==""){
 			alert("fill the required fields");
+			 name.value="";
+                         quantity.value="";
+                         taxx.value="";
+                        amount.value="";
 			
 		}
 
@@ -102,6 +106,10 @@
 			myRows[index][$(headers[cellIndex]).html()]=$(this).html(); //.html() is used to get contents of the selected element
 		});
 		document.getElementById("pro").reset();
+			 name.value="";
+                        quantity.value="";
+                        taxx.value="";
+                         amount.value="";
 		
 					      
 });
