@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>product</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<style type="text/css">
+		body{
+			text-align: center;
+			}
+
+		#pro{
+		display:inline-block;
+		background:#cceeff;
+		width:100%;
+			}
+
+		table {
+			width: 100%;
+			}
+
+
+		th {
+		height: 50px;
+		background-color: #99ffd6;
+		color: black;
+			}
+
+		th, td {
+		border-bottom: 1px solid #ddd;
+		padding-top: 15px;
+		padding-bottom: 15px;
+		text-align: left;
+			}
+
+		tr:nth-child(even) {background-color: #f2f2f2;}
+
+		.jumbotron{
+			background:;
+			}
+	</style>
+	<script
+	src="https://code.jquery.com/jquery-3.4.1.js"
+	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+	crossorigin="anonymous"></script>
+	
+	<script type="text/javascript">
+		function getinput(){
+			var name=document.getElementById("name");
+			var quantity=document.getElementById("quantity");
+			var amount=document.getElementById("amount");
+			var amnt=amount.value*quantity.value;
+			var tax=(5*amnt)/100;
+			var grossamount=amnt;
+			var netamount=amnt-tax;
+		  
+			var table = document.getElementById("tb").getElementsByTagName("tbody")[0];
+            var row = table.insertRow();
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
+            var cell6 = row.insertCell(5);
+              
+           cell1.innerHTML = name.value;
+           cell2.innerHTML = quantity.value;
+           cell3.innerHTML = amount.value;
+           cell4.innerHTML = tax;
+           cell5.innerHTML = netamount;
+		   cell6.innerHTML = grossamount;
+		   
+		var myRows= []; // empty array for rows
+		var headers= $("th"); // contains all table headers
+		var $rows= $("tbody tr").each(function(index){
+		cells= $(this).find("td"); // finds the decendants of the selected element and constructs a jQuery object
+		myRows[index]= {}; // empty object for myRows
+		cells.each(function(cellIndex){
+			myRows[index][$(headers[cellIndex]).html()]=$(this).html(); //.html() is used to get contents of the selected element
+		});
+		document.getElementById("pro").reset();
+});
+
+var myObj= {};
+myObj.myRows= myRows;
+console.log(JSON.stringify(myObj));
+       }
+
+	</script>
+</head>
+<body>
+	<div class="jumbotron">
+		<h1 class="display-4">BILL CALCULATOR</h1>
+		<p class="lead">Enter the Product name product quantity and amount to get your net and gross amount!</p>
+	</div >
+
+	<div class="alert alert-success container" role="alert">
+		Taxes are set as 5% by default
+	</div>
+	<div class="alert alert-success container" role="alert">
+		Fill in the all the required fields and submit the form
+	</div>
+	<div class="alert alert-success container" role="alert">
+		look in the table to get the tax amount,net and gross amount
+	</div>
+	<div class="container">
+		<h3>Fill in the credentials</h3>
+		<form id="pro">
+		<div class="form-group">
+				<label for="name">Product Name</label>
+				<input type="text" class="form-control" placeholder="Product Name" name="Product Name" required id="name">
+			</div>
+			<div class="form-group">
+				<label for="quantity">Quantity</label>
+				<input type="number" class="form-control" placeholder="Quantity" name="Quantity" required id="quantity">
+			</div>
+			<div class="form-group">
+				<label for="amount">Amount</label>
+				<input type="number" class="form-control" placeholder="Amount" name="Amount" required id="amount">
+			</div>
+
+		<button type='button' class="btn btn-primary btn-lg" onclick="getinput();" style="text-align:  center ;">Submit</button>
+		</form>
+	</div>
+
+	<br>
+	<div class="container">
+	<table  id="tb">
+	<thead>
+		<th>product name</th>
+		<th>product quantity</th>
+		<th>product amount</th>
+		<th>product tax</th>
+		<th>Net amount</th>
+		<th>gross amount</th>
+	</thead>
+	<tbody>
+		
+		
+	</tbody>
+		</table>
+	</div>
+</body>
+</html>
